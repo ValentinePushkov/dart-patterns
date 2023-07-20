@@ -78,7 +78,7 @@ class CoffeeBuilder {
     coffee.addAddition(Syrup());
   }
 
-  void addCoffee() {
+  void addDoubleCoffee() {
     coffee.addAddition(DoubleCoffee());
   }
 }
@@ -86,7 +86,7 @@ class CoffeeBuilder {
 void main() {
   CoffeeBuilder coffeeBuilder = CoffeeBuilder();
   coffeeBuilder.startMakingCoffee();
-  coffeeBuilder.addCoffee();
+  coffeeBuilder.addDoubleCoffee();
   coffeeBuilder.addMilk();
   coffeeBuilder.addSugar();
   coffeeBuilder.addCinnemon();

@@ -54,7 +54,7 @@ class Coffee {
 class CoffeeBuilder {
   late Coffee coffee;
 
-  void createCoffee() => coffee = Coffee();
+  void startMakingCoffee() => coffee = Coffee();
 
   Coffee getCoffee() => coffee;
 
@@ -85,7 +85,7 @@ class CoffeeBuilder {
 
 void main() {
   CoffeeBuilder coffeeBuilder = CoffeeBuilder();
-  coffeeBuilder.createCoffee();
+  coffeeBuilder.startMakingCoffee();
   coffeeBuilder.addCoffee();
   coffeeBuilder.addMilk();
   coffeeBuilder.addSugar();

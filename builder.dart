@@ -88,14 +88,35 @@ class CoffeeBuilder {
   }
 }
 
-void main() {
-  CoffeeBuilder coffeeBuilder = CoffeeBuilder();
-  coffeeBuilder.startMakingCoffee();
-  coffeeBuilder.addDoubleCoffee();
-  coffeeBuilder.addMilk();
-  coffeeBuilder.addSugar();
-  coffeeBuilder.addCinnemon();
+class Director {
+  void makeCoffeeWithMilkAndSugar(CoffeeBuilder coffeeBuilder) {
+    coffeeBuilder.startMakingCoffee();
+    coffeeBuilder.addSugar();
+    coffeeBuilder.addMilk();
+  }
 
+  void makeCoffeeWithSyrupAndCream(CoffeeBuilder coffeeBuilder) {
+    coffeeBuilder.startMakingCoffee();
+    coffeeBuilder.addCream();
+    coffeeBuilder.addSyrup();
+  }
+
+  void makeDoubleCoffeeWithCinnemon(CoffeeBuilder coffeeBuilder) {
+    coffeeBuilder.startMakingCoffee();
+    coffeeBuilder.addDoubleCoffee();
+    coffeeBuilder.addCinnemon();
+  }
+}
+
+void main() {
+  var director = Director();
+  CoffeeBuilder coffeeBuilder = CoffeeBuilder();
+
+  director.makeCoffeeWithMilkAndSugar(coffeeBuilder);
   Coffee coffee = coffeeBuilder.getCoffee();
+  print(coffee.toString());
+
+  director.makeCoffeeWithSyrupAndCream(coffeeBuilder);
+  coffee = coffeeBuilder.getCoffee();
   print(coffee.toString());
 }

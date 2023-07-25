@@ -1,54 +1,59 @@
 abstract class Addition {
-  late String name;
+  late String? name;
 
   String getName() {
-    return name;
+    return name ?? 'no addition';
   }
 }
 
 class Milk extends Addition {
   Milk() {
-    name = "Milk";
+    name = "milk";
   }
 }
 
 class Cream extends Addition {
   Cream() {
-    name = "Cream";
+    name = "cream";
   }
 }
 
 class Sugar extends Addition {
   Sugar() {
-    name = "Sugar";
+    name = "sugar";
   }
 }
 
 class Cinnemon extends Addition {
   Cinnemon() {
-    name = "Cinnemon";
+    name = "cinnemon";
   }
 }
 
 class Syrup extends Addition {
   Syrup() {
-    name = "Syrup";
+    name = "syrup";
   }
 }
 
 class DoubleCoffee extends Addition {
   DoubleCoffee() {
-    name = "Double Coffee";
+    name = "double coffee";
   }
 }
 
 class Coffee {
-  final List<Addition> _additions = [];
+  Milk? milk;
+  Cream? cream;
+  Sugar? sugar;
+  Cinnemon? cinnemon;
+  Syrup? syrup;
+  DoubleCoffee? doubleCoffee;
 
-  void addAddition(Addition addition) => _additions.add(addition);
-
-  String getFormatedAdditions() =>
-      _additions.map((e) => e.getName()).join(', ');
+  @override
+  String toString() {
+    return 'Coffee includes: ${milk?.name ?? 'no milk'}, ${cream?.name ?? 'no cream'}, ${sugar?.name ?? 'no sugar'}, ${cinnemon?.name ?? 'no cinnemon'}, ${syrup?.name ?? 'no syrup'}, ${doubleCoffee?.name ?? 'no double coffee'}.';
+  }
 }
 
 class CoffeeBuilder {
@@ -59,27 +64,27 @@ class CoffeeBuilder {
   Coffee getCoffee() => coffee;
 
   void addMilk() {
-    coffee.addAddition(Milk());
+    coffee.milk = Milk();
   }
 
   void addCream() {
-    coffee.addAddition(Cream());
+    coffee.cream = Cream();
   }
 
   void addSugar() {
-    coffee.addAddition(Sugar());
+    coffee.sugar = Sugar();
   }
 
   void addCinnemon() {
-    coffee.addAddition(Cinnemon());
+    coffee.cinnemon = Cinnemon();
   }
 
   void addSyrup() {
-    coffee.addAddition(Syrup());
+    coffee.syrup = Syrup();
   }
 
   void addDoubleCoffee() {
-    coffee.addAddition(DoubleCoffee());
+    coffee.doubleCoffee = DoubleCoffee();
   }
 }
 
@@ -92,5 +97,5 @@ void main() {
   coffeeBuilder.addCinnemon();
 
   Coffee coffee = coffeeBuilder.getCoffee();
-  print(coffee.getFormatedAdditions());
+  print(coffee.toString());
 }
